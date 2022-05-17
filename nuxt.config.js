@@ -2,15 +2,19 @@ require('dotenv').config()
 
 module.exports = {
   mode: 'universal',
+  target: 'static',
+  router: {
+    base: '/accompany-map/'
+  },
   /*
   ** Headers of the page
   */
   head: {
-    title: 'Google Sheet + Mapbox Mapper - DemocraciaOS',
+    title: 'Programa Acompañar - Mapeo',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
-      { hid: 'description', name: 'description', content: process.env.npm_package_description || '' }
+      { hid: 'description', name: 'description', content: 'Mapa interactivo del proyecto Acompañar' }
     ],
     link: [
       { rel: 'icon', type: 'image/png', href: '/favicon.png' },
@@ -43,6 +47,7 @@ module.exports = {
   */
   css: [
     // { src: '@/assets/scss/buefy-overrides.scss', lang: 'sass' }
+    { src: '@/assets/scss/main.scss', lang: 'sass' }
   ],
   /*
   ** Plugins to load before mounting the App
@@ -55,7 +60,7 @@ module.exports = {
   buildModules: [
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
-    '@nuxtjs/google-analytics'
+    '@nuxtjs/google-gtag'
   ],
   /*
   ** Nuxt.js modules
@@ -94,9 +99,17 @@ module.exports = {
   ** Google Analytics configuration
   ** See https://github.com/nuxt-community/analytics-module
   */
-  googleAnalytics: {
+  'google-gtag': {
     id: process.env.GOOGLE_ANALYTICS_ID,
-    dev: false
+    config: {
+      anonymize_ip: true, // anonymize IP
+      send_page_view: false, // might be necessary to avoid duplicated page track on page reload
+      linker: {
+        domains: ['guillecro.github.io/accompany-map']
+      }
+    },
+    debug: true, // enable to track in dev mode
+    disableAutoPageTrack: false // disable if you don't want to track each page route with router.afterEach(...).
   },
   /*
   ** Build configuration

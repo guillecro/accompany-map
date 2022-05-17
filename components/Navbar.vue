@@ -33,13 +33,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.layout-top {
-  background-color: #4319b6;
-  padding: 10px;
-  color: #fff;
-  order: 0;
-  flex: 0 1 auto;
-}
 .dos-icon {
   width: auto;
   height: 15px;

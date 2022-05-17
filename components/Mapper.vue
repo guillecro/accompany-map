@@ -47,19 +47,26 @@ export default {
     addPoints (map) {
       // iterate through your table to set the marker to lat/long values for each row
       this.sheetData.rows.forEach((row) => {
+        if (row.latitude === '-' || row.longitude === '-' || row.latitude === '' || row.longitude === '') {
+          return
+        }
         // Create the Title
         let str = `<h3>${row.title}</h3>`
-        str += '<h4>'
+        str += '<div class="the-marker-content">'
         this.extraHeaders.forEach((header) => {
-          str += `<p><b>${header}</b><br/>${row[header] || '<i>- No Data -</i>'}</p>`
+          if (header === 'Latitud' || header === 'Longitud') {
+            return
+          }
+          str += `<p class="data-title">${header}</p><p class="data-text">${row[header] || '<i>- No Data -</i>'}</p>`
         })
-        str += '</h4>'
+        str += '</div>'
         // create a variable for your popup for the current event
         const popup = new mapboxgl.Popup().setHTML(str) // use the table to populate your popup with text
 
         // create a variable for your markup and add it to the map
         new mapboxgl.Marker({
-          color: row.color
+          color: row.color,
+          scale: 0.5
         })
           .setLngLat([row.longitude, row.latitude])
           .setPopup(popup)

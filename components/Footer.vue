@@ -15,15 +15,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss" scoped>
-.layout-bottom {
-  background-color: #4319b6;
-  padding: 3px;
-  font-size: 0.8rem;
-  color: #fff;
-  order: 0;
-  flex: 0 1 auto;
-  align-self: auto;
-}
-</style>

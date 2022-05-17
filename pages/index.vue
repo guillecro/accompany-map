@@ -20,30 +20,15 @@
                 Launch!&nbsp;<i class="fas fa-rocket" />
               </button>
             </div>
-            <p class="is-size-7">
-              <a
-                :href="`https://docs.google.com/spreadsheets/d/${sheetId}`"
-                target="_blank"
-                class="has-text-white"
-              >Open the example sheet&nbsp;<i class="fas fa-external-link-alt fa-fw" /></a>
-            </p>
-            <p class="is-size-7">
-              <a
-                href="https://github.com/DemocraciaEnRed/sheet-mapper"
-                target="_blank"
-                class="has-text-white"
-              >Check the code in <i class="fab fa-github fa-fw" /> Github &nbsp;<i class="fas fa-external-link-alt fa-fw" />
-              </a>
-            </p>
             <br>
             <br>
             <div class="columns is-centered is-vcentered is-mobile">
-              <div class="column is-narrow">
-                <a href="https://democraciaenred.org" target="_blank"><img src="~/assets/der-logo-white.svg" class="der-icon"></a>
+              <div class="column is-narrow is-size-2">
+                🦝
               </div>
               <div class="column is-narrow has-text-left">
                 <p class="is-size-7">
-                  Developed by<br><a href="https://democraciaenred.org" class="has-text-white"><b>Democracia en Red</b></a>
+                  Developed by<br><a href="https://github.com/guillecro" class="has-text-white"><b>Guillermo Croppi</b></a>
                 </p>
               </div>
             </div>
@@ -81,7 +66,7 @@ export default {
 
 <style lang="scss" scoped>
 .dos-icon {
-  width: 350px;
+  width: 200px;
   margin: 0 auto 30px;
 }
 .der-icon {
