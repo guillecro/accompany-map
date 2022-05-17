@@ -19,6 +19,7 @@ export default {
     Mapper,
     Footer
   },
+  fetchOnServer: false,
   async asyncData ({ app, params, store, $axios, $config, env }) {
     try {
       // console.log(app)
