@@ -37,7 +37,7 @@ export default {
     },
     extraHeaders () {
       if (!this.sheetData) { return [] }
-      const noExtra = ['title', 'latitude', 'longitude', 'color', 'original_latitud', 'original_longitud']
+      const noExtra = ['title', 'latitude', 'longitude', 'color', 'original_latitud', 'original_longitud', 'google_maps_lat_long']
       const extraHeaders = this.sheetData.keys.filter((x) => {
         return !noExtra.includes(x)
       })
