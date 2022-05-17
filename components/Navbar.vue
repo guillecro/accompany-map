@@ -9,7 +9,7 @@
       </div>
       <div class="text-container">
         <p class="has-text-right is-size-7">
-          Sheet: {{ sheetData.title }}&nbsp;&nbsp;
+          Spreadsheet&nbsp;&nbsp;
           <a :href="`https://docs.google.com/spreadsheets/d/${sheetId}`" target="_blank" class="has-text-white">
             <i class="fas fa-external-link-alt" />
           </a>
@@ -21,12 +21,10 @@
 
 <script>
 export default {
+  name: 'BlockNavbar',
   computed: {
     sheetId () {
       return process.env.googleSheetId
-    },
-    sheetData () {
-      return this.$store.state.sheet.data
     }
   }
 }

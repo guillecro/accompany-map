@@ -1,18 +1,17 @@
-require('dotenv').config()
-
-module.exports = {
-  mode: 'universal',
+export default {
+  // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
-  router: {
-    base: '/accompany-map/'
-  },
-  /*
-  ** Headers of the page
-  */
+
+  // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'Programa Acompañar - Mapeo',
+    title: 'accompany-map-nuxtjs',
+    htmlAttrs: {
+      lang: 'en'
+    },
     meta: [
       { charset: 'utf-8' },
+      { hid: 'description', name: 'description', content: '' },
+      { name: 'format-detection', content: 'telephone=no' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Mapa interactivo del proyecto Acompañar' }
     ],
@@ -26,79 +25,53 @@ module.exports = {
       { src: 'https://api.mapbox.com/mapbox-gl-js/v1.8.1/mapbox-gl.js' }
     ]
   },
-  /*
-  ** Enviroment variables for the client
-  */
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    { src: '@/assets/scss/main.scss', lang: 'sass' }
+  ],
+
+  // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
+  plugins: [
+  ],
+
+  // Auto import components: https://go.nuxtjs.dev/config-components
+  components: true,
+
   env: {
-    baseUrl: process.env.BASE_URL || 'http://localhost:3000',
     googleSheetId: process.env.GOOGLE_SHEET_ID || '',
+    googleApiKey: process.env.GOOGLE_API_KEY || '',
     mapboxApiKey: process.env.MAPBOX_API_KEY || '',
     mapboxMapStyle: process.env.MAPBOX_MAP_STYLE || '',
     mapCenterLatitude: process.env.MAP_CENTER_LATITUDE || '',
     mapCenterLongitude: process.env.MAP_CENTER_LONGITUDE || '',
     mapZoomDefault: process.env.MAP_ZOOM_DEFAULT || ''
   },
-  /*
-  ** Customize the progress-bar color
-  */
-  loading: { color: '#fff' },
-  /*
-  ** Global CSS
-  */
-  css: [
-    // { src: '@/assets/scss/buefy-overrides.scss', lang: 'sass' }
-    { src: '@/assets/scss/main.scss', lang: 'sass' }
-  ],
-  /*
-  ** Plugins to load before mounting the App
-  */
-  plugins: [
-  ],
-  /*
-  ** Nuxt.js dev-modules
-  */
+
+  // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // Doc: https://github.com/nuxt-community/eslint-module
+    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
     '@nuxtjs/google-gtag'
   ],
-  /*
-  ** Nuxt.js modules
-  */
+
+  // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
-    // Doc: https://buefy.github.io/#/documentation
+    // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
-    // Doc: https://axios.nuxtjs.org/usage
-    '@nuxtjs/axios',
-    // Doc: https://github.com/nuxt-community/dotenv-module
-    '@nuxtjs/dotenv',
-    ['nuxt-env', {
-      keys: [
-        { key: 'BASE_URL', name: 'baseUrl' },
-        { key: 'GOOGLE_API_KEY', name: 'googleApiKey', secret: true },
-        { key: 'GOOGLE_SHEET_ID', name: 'googleSheetId' },
-        { key: 'MAPBOX_API_KEY', name: 'mapboxApiKey' },
-        { key: 'MAPBOX_MAP_STYLE', name: 'mapboxMapStyle' },
-        { key: 'MAP_CENTER_LATITUDE', name: 'mapCenterLatitude' },
-        { key: 'MAP_CENTER_LONGITUDE', name: 'mapCenterLongitude' },
-        { key: 'MAP_ZOOM_DEFAULT', name: 'mapZoomDefault' }
-      ]
-    }]
+    // https://go.nuxtjs.dev/axios
+    '@nuxtjs/axios'
   ],
-  serverMiddleware: [
-    '~/api/sheets.js'
-  ],
-  /*
-  ** Axios module configuration
-  ** See https://axios.nuxtjs.org/options
-  */
+
+  // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseUrl: process.env.baseUrl
+    // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
+    baseURL: '/'
   },
-  /*
-  ** Google Analytics configuration
-  ** See https://github.com/nuxt-community/analytics-module
-  */
+
+  // Build Configuration: https://go.nuxtjs.dev/config-build
+  build: {
+  },
   'google-gtag': {
     id: process.env.GOOGLE_ANALYTICS_ID,
     config: {
@@ -110,15 +83,5 @@ module.exports = {
     },
     debug: true, // enable to track in dev mode
     disableAutoPageTrack: false // disable if you don't want to track each page route with router.afterEach(...).
-  },
-  /*
-  ** Build configuration
-  */
-  build: {
-    /*
-    ** You can extend webpack config here
-    */
-    extend (config, ctx) {
-    }
   }
 }

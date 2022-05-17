@@ -14,27 +14,31 @@
 import Mapbox from 'mapbox-gl-vue'
 
 export default {
+  name: 'BlockMapper',
   components: { Mapbox },
+  fetchOnServer: false,
   data () {
     return {
-      mapboxOptions: {
-        style: this.$env.mapboxMapStyle,
-        center: [this.$env.mapCenterLongitude, this.$env.mapCenterLatitude],
-        zoom: this.$env.mapZoomDefault
-      }
     }
   },
   computed: {
     mapboxApiKey () {
-      return this.$env.mapboxApiKey
+      return process.env.mapboxApiKey
+    },
+    mapboxOptions () {
+      return {
+        style: process.env.mapboxMapStyle,
+        center: [process.env.mapCenterLongitude, process.env.mapCenterLatitude],
+        zoom: process.env.mapZoomDefault
+      }
     },
     sheetData () {
       return this.$store.state.sheet.data
     },
     extraHeaders () {
       if (!this.sheetData) { return [] }
-      const noExtra = ['title', 'latitude', 'longitude', 'color']
-      const extraHeaders = this.sheetData.headers.filter((x) => {
+      const noExtra = ['title', 'latitude', 'longitude', 'color', 'original_latitud', 'original_longitud']
+      const extraHeaders = this.sheetData.keys.filter((x) => {
         return !noExtra.includes(x)
       })
       return extraHeaders
@@ -46,7 +50,7 @@ export default {
     },
     addPoints (map) {
       // iterate through your table to set the marker to lat/long values for each row
-      this.sheetData.rows.forEach((row) => {
+      this.sheetData.values.forEach((row) => {
         if (row.latitude === '-' || row.longitude === '-' || row.latitude === '' || row.longitude === '') {
           return
         }
@@ -57,7 +61,7 @@ export default {
           if (header === 'Latitud' || header === 'Longitud') {
             return
           }
-          str += `<p class="data-title">${header}</p><p class="data-text">${row[header] || '<i>- No Data -</i>'}</p>`
+          str += `<p class="data-title">${this.sheetData.labels[header]}</p><p class="data-text">${row[header] || '<i>- No Data -</i>'}</p>`
         })
         str += '</div>'
         // create a variable for your popup for the current event

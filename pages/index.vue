@@ -41,7 +41,7 @@
 
 <script>
 export default {
-  name: 'Home',
+  name: 'IndexHome',
   components: {},
   data () {
     return {
