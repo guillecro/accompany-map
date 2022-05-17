@@ -70,7 +70,7 @@ export default {
         // create a variable for your markup and add it to the map
         new mapboxgl.Marker({
           color: row.color,
-          scale: 0.5
+          scale: 0.7
         })
           .setLngLat([row.longitude, row.latitude])
           .setPopup(popup)
