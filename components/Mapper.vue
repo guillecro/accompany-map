@@ -1,6 +1,10 @@
 <template>
-  <div class="layout-mapper">
+  <div class="layout-mapper" :class="{'loading': $fetchState.pending}">
+    <div v-if="$fetchState.pending" class="has-text-white">
+      Cargando <i class="fas fa-sync fa-spin" />
+    </div>
     <mapbox
+      v-else
       ref="theMap"
       :access-token="mapboxApiKey"
       :map-options="mapboxOptions"
@@ -16,14 +20,50 @@ import Mapbox from 'mapbox-gl-vue'
 export default {
   name: 'BlockMapper',
   components: { Mapbox },
-  fetchOnServer: false,
   data () {
     return {
+    }
+  },
+  fetchOnServer: false,
+  async fetch () {
+    try {
+      // console.log(app)
+      // fetch with axios
+      const response = await this.$axios.get(`https://sheets.googleapis.com/v4/spreadsheets/${this.googleSheetId}/values/data?key=${this.googleApiKey}`)
+      const keys = response.data.values[0]
+      const labels = response.data.values[1]
+      const values = response.data.values.slice(2)
+      const theLabels = {}
+      keys.forEach((key, index) => {
+        theLabels[key] = labels[index]
+      })
+      const theValues = []
+      values.forEach((entry) => {
+        // eslint-disable-next-line prefer-const
+        const marker = {}
+        keys.forEach((k, i) => {
+          marker[k] = entry[i] !== '' ? entry[i] : null
+        })
+        theValues.push(marker)
+      })
+      this.$store.commit('sheet/commit', {
+        keys,
+        labels: theLabels,
+        values: theValues
+      })
+    } catch (err) {
+      console.error(err)
     }
   },
   computed: {
     mapboxApiKey () {
       return process.env.mapboxApiKey
+    },
+    googleSheetId () {
+      return process.env.googleSheetId
+    },
+    googleApiKey () {
+      return process.env.googleApiKey
     },
     mapboxOptions () {
       return {
@@ -86,6 +126,12 @@ export default {
   // background-color: #2a2b33;
   flex: 1 0 auto;
   align-self: auto;
+  background-color: #c9ebf8;
+  &.loading {
+    display: flex;
+    justify-content:center;
+    align-items:center;
+  }
 }
 .mapboxgl-map {
   height: 100%;

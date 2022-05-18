@@ -1,7 +1,7 @@
 <template>
   <div class="layout-bottom">
     <div class="container has-text-centered">
-      <p>Markers: {{ sheetData.values.length }}</p>
+      <p v-if="sheetData">Markers: {{ sheetData.values.length }}</p>
     </div>
   </div>
 </template>
