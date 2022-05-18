@@ -1,4 +1,6 @@
 @import "~bulma/sass/utilities/_all";
+@import url('https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
 $primary : #37BBED;
 $body-size: 14px;
 // $secondary : #371575;
@@ -14,3 +16,5 @@ $colors: (
     "warning": ($warning, $warning-invert),
     "danger": ($danger, $danger-invert),
 );
+
+$family-primary: 'Encode Sans', $family-sans-serif;

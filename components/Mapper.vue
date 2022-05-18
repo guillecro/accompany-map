@@ -1,6 +1,6 @@
 <template>
   <div class="layout-mapper" :class="{'loading': $fetchState.pending}">
-    <div v-if="$fetchState.pending" class="has-text-white">
+    <div v-if="$fetchState.pending" class="has-text-primary">
       Cargando <i class="fas fa-sync fa-spin" />
     </div>
     <mapbox
@@ -107,11 +107,16 @@ export default {
         // create a variable for your popup for the current event
         const popup = new mapboxgl.Popup().setHTML(str) // use the table to populate your popup with text
 
+        // create the dot
+        const el = document.createElement('div')
+        el.className = 'custom-marker'
+        el.style.background = row.color
+        el.style['border-radius'] = '40px'
+        el.style.border = '2px solid #FFFFFF'
+        el.style.width = '16px'
+        el.style.height = '16px'
         // create a variable for your markup and add it to the map
-        new mapboxgl.Marker({
-          color: row.color,
-          scale: 0.7
-        })
+        new mapboxgl.Marker(el)
           .setLngLat([row.longitude, row.latitude])
           .setPopup(popup)
           .addTo(map) // add the marker to the map
@@ -126,7 +131,7 @@ export default {
   // background-color: #2a2b33;
   flex: 1 0 auto;
   align-self: auto;
-  background-color: #c9ebf8;
+  background-color: #fff;
   &.loading {
     display: flex;
     justify-content:center;

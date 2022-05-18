@@ -4,20 +4,17 @@
       <div class="container">
         <div class="columns is-centered">
           <div class="column is-8 has-text-centered">
-            <a href="https://democraciaos.org" target="_blank">
-              <img src="~/assets/dos-logo.svg" class="dos-icon">
-            </a>
-            <h1 class="title is-2 is-size-3-mobile">
-              Google Sheet + Mapbox Mapper
+            <h1 class="title is-2 is-800 is-size-3-mobile">
+              Programa ACOMPAÑAR
             </h1>
             <h1 class="subtitle is-5 is-size-6-mobile">
-              No-coding mapper for everyone to contribute in Google Sheets
+              Mapeo de sedes. Con la tecnología de Google Sheets & Mapbox.com
             </h1>
             <br>
             <br>
             <div class="buttons is-centered is-marginless">
               <button class="button is-white is-outlined is-medium" :class="{'is-loading': isLoading}" @click="goToMap">
-                Launch!&nbsp;<i class="fas fa-rocket" />
+                Ir al mapa!&nbsp;<i class="fas fa-rocket" />
               </button>
             </div>
             <br>

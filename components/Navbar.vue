@@ -2,14 +2,14 @@
   <div class="layout-top">
     <div class="top-container">
       <div class="icon-container">
-        <nuxt-link to="/">
-          <img src="~/assets/dos-logo.svg" class="dos-icon" alt>
+        <nuxt-link to="/" class="has-text-white">
+          <i class="fas fa-home" /> Inicio
         </nuxt-link>
-        <!-- <img src="~/assets/der-logo-white-alt.svg" class="der-icon" alt> -->
       </div>
+      <p v-if="sheetData"><i class="fas fa-location-dot"></i>&nbsp;Puntos: {{ sheetData.values.length }}&nbsp;&nbsp;&nbsp;</p>
       <div class="text-container">
-        <p class="has-text-right is-size-7">
-          Spreadsheet&nbsp;&nbsp;
+        <p class="has-text-right">
+          <i class="fas fa-table"/>&nbsp;Spreadsheet&nbsp;&nbsp;
           <a :href="`https://docs.google.com/spreadsheets/d/${sheetId}`" target="_blank" class="has-text-white">
             <i class="fas fa-external-link-alt" />
           </a>
@@ -25,6 +25,9 @@ export default {
   computed: {
     sheetId () {
       return process.env.googleSheetId
+    },
+    sheetData () {
+      return this.$store.state.sheet.data
     }
   }
 }

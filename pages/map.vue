@@ -2,22 +2,22 @@
   <section class="layout-container">
     <Navbar />
     <Mapper />
-    <Footer />
+    <!-- <Footer /> -->
   </section>
 </template>
 
 <script>
 import Navbar from '~/components/Navbar'
 import Mapper from '~/components/Mapper'
-import Footer from '~/components/Footer'
+// import Footer from '~/components/Footer'
 // import { GoogleSpreadsheet } from 'google-spreadsheet'
 
 export default {
   name: 'TheMap',
   components: {
     Navbar,
-    Mapper,
-    Footer
+    Mapper
+    // Footer
   }
   // fetchOnServer: false,
   // async asyncData ({ app, params, store, $axios, $config, env }) {

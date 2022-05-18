@@ -1,3 +1,16 @@
+//==========================
+
+@mixin font-weight($weight) {
+  font-weight: $weight !important;
+}
+
+//==========================
+
+@for $i from 1 through 9 {
+  .is-#{100 * $i} {
+    @include font-weight(100 * $i)
+  }
+}
 
 .layout-container {
   display: flex;
@@ -11,7 +24,7 @@
 
 .layout-top {
   background-color: $primary;
-  padding: 10px;
+  padding: 7px 10px;
   color: #fff;
   order: 0;
   flex: 0 1 auto;
