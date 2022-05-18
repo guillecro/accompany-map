@@ -1,0 +1,1 @@
+window.__NUXT__=(function(a){return {staticAssetsBase:"\u002Faccompany-map\u002F_nuxt\u002Fstatic\u002F1652899686",layout:"default",error:a,state:{sheet:{data:a}},serverRendered:true,routePath:"\u002F",config:{_app:{basePath:"\u002Faccompany-map\u002F",assetsPath:"\u002Faccompany-map\u002F_nuxt\u002F",cdnURL:a}}}}(null));
