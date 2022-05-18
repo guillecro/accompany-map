@@ -17,8 +17,8 @@ export default {
       { hid: 'description', name: 'description', content: 'Mapa interactivo del proyecto Acompañar' }
     ],
     link: [
-      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
-      { href: 'https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap', rel: 'stylesheet' },
+      { rel: 'icon', type: 'image/png', href: '/accompany-map/favicon.png' },
+      { href: 'https://fonts.googleapis.com/css2?family=Encode+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap', rel: 'stylesheet' },
       { href: 'https://api.mapbox.com/mapbox-gl-js/v2.8.2/mapbox-gl.css', rel: 'stylesheet' },
       { href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css', rel: 'stylesheet', integrity: 'sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==', crossorigin: 'anonymous', referrerpolicy: 'no-referrer' }
     ],
